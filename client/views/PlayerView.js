@@ -25,8 +25,6 @@ var PlayerView = Backbone.View.extend({
   },
 
   nextSong: function() {
-    $el.pause();
-    $el.currentTime = 0;
     this.model.ended();
   }
 });
