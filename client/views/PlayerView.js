@@ -12,7 +12,6 @@ var PlayerView = Backbone.View.extend({
 
   events:{
     'ended': 'nextSong',
-    'dequeue': 'nextSong'
   },
 
   setSong: function(song) {

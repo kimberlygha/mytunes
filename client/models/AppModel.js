@@ -20,7 +20,7 @@ var AppModel = Backbone.Model.extend({
         this.set('currentlyPlaying', true);
       }
     }, this);
-    this.get('songQueue').on('finish', function(){
+    this.get('songQueue').on('stopPlay', function(){
       this.set('currentSong', undefined);
     },this);
 
@@ -34,12 +34,3 @@ var AppModel = Backbone.Model.extend({
 
 });
 
-
-  // removeSong: function(id){
-  //     this.remove(id);
-  //     if(this.length > 0){
-  //       this.playFirst();
-  //     } else{
-  //       this.finish(); 
-  //     }
-  // },

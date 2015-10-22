@@ -8,8 +8,10 @@ var SongQueue = Songs.extend({
       }
     }, this);
 
-    this.on('ended', function(song){
-      this.first().dequeue()
+    this.on('ended', function() {
+      this.first().set('playCount', this.first().get('playCount')+1);
+      debugger; 
+      this.first().dequeue();
     }, this);
 
     this.on('dequeue', function(song){ 
@@ -17,7 +19,7 @@ var SongQueue = Songs.extend({
       if(this.length > 0){
         this.playFirst();
       } else{
-        this.finish(); 
+        this.stopPlay(); 
       }
     }, this);
   }, 
@@ -26,22 +28,9 @@ var SongQueue = Songs.extend({
     this.first().play();
   }, 
 
-  finish: function(){
-    this.trigger('finish');
+  stopPlay: function(){
+    this.trigger('stopPlay');
   }
 
 });
 
-
-    // params.library.on('ended', function(song){
-    //   song.dequeue();
-    // },this)
-    // params.library.on('dequeue', function(song){
-    //   this.set('currentlyPlaying', false);
-    //   this.get('songQueue').remove(song.cid);
-    //   if(this.get('songQueue').length > 0){
-    //     this.get('songQueue').playFirst();
-    //   } else{
-    //     this.get('songQueue').finish(); 
-    //   }
-    // }, this)
