@@ -11,7 +11,8 @@ var PlayerView = Backbone.View.extend({
   },
 
   events:{
-    'ended': 'nextSong'
+    'ended': 'nextSong',
+    'dequeue': 'nextSong'
   },
 
   setSong: function(song) {
@@ -24,6 +25,8 @@ var PlayerView = Backbone.View.extend({
   },
 
   nextSong: function() {
+    $el.pause();
+    $el.currentTime = 0;
     this.model.ended();
   }
 });
