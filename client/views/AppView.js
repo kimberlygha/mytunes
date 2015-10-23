@@ -15,12 +15,25 @@ var AppView = Backbone.View.extend({
     this.model.on('change: songQueue', this.render, this);
   },
 
+
   render: function() {
-    return this.$el.html([
+    this.$el.addClass('mytunes'); 
+    
+    this.$el.html([
       this.playerView.$el,
       this.libraryView.$el, 
       this.songQueueView.$el
     ]);
+
+    return this.$el; 
+  },
+
+  events: {
+    'click .playlist': 'createPlaylist'
+  },
+
+  createPlaylist: function() {
+    this.playlist = new Play
   }
 
 });

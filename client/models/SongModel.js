@@ -2,7 +2,8 @@
 var SongModel = Backbone.Model.extend({
 
   defaults: {
-    playCount: 0
+    playCount: 0, 
+    like: true
   },
 
   play: function() {
